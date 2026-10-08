@@ -1,0 +1,19 @@
+{
+  "name": "quality-architecture-base",
+  "displayName": "Quality Architecture Base",
+  "version": "0.1.0",
+  "description": "Reusable AI-powered toolkit for software architecture, code quality, performance auditing, and safe refactoring.",
+  "author": {
+    "name": "ORDNALE"
+  },
+  "repository": "https://github.com/ORDNALE/quality-architecture-base",
+  "keywords": [
+    "architecture",
+    "code-quality",
+    "refactoring",
+    "quarkus",
+    "n+1",
+    "pagination",
+    "audit"
+  ]
+}

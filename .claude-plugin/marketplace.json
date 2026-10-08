@@ -1,0 +1,14 @@
+{
+  "name": "quality-architecture-base",
+  "description": "Marketplace da Quality Architecture Base (um único plugin).",
+  "owner": {
+    "name": "ORDNALE"
+  },
+  "plugins": [
+    {
+      "name": "quality-architecture-base",
+      "source": "./",
+      "description": "Skill quality-review (INIT, AUDIT, FIX, REVIEW) e subagentes de auditoria, refatoração controlada e validação de regressões."
+    }
+  ]
+}

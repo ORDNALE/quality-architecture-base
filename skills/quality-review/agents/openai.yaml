@@ -1,0 +1,7 @@
+# Metadados da skill para o Codex (opcional; outras ferramentas ignoram este arquivo).
+interface:
+  display_name: "Quality Review"
+  short_description: "Auditoria de arquitetura, qualidade, N+1/paginação e refatoração segura"
+  default_prompt: "Use $quality-review em modo AUDIT neste projeto, somente leitura."
+policy:
+  allow_implicit_invocation: true

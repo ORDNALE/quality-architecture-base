@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Saídas locais de execuções de teste/validação
+.tmp/
+tests/.output/
+
+# Artefatos de projetos de exemplo, caso alguém compile localmente
+examples/**/target/
+examples/**/node_modules/
+examples/**/dist/
+
+# IDEs e SO
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Configurações locais de ferramentas de IA (não versionar preferências pessoais)
+.claude/settings.local.json

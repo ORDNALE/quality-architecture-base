@@ -1,0 +1,9 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: vendas
+      POSTGRES_USER: vendas
+      POSTGRES_PASSWORD: example-only
+    ports:
+      - "5432:5432"
