@@ -138,11 +138,6 @@ Esta base cobre arquitetura, qualidade, performance, testes e refatoração. **N
 ferramenta de auditoria de segurança: riscos de segurança percebidos são apenas registrados e
 encaminhados para análise especializada.
 
-## Contribuição
-
-Veja [CONTRIBUTING.md](CONTRIBUTING.md).
-
 ## Licença
 
-Ainda não há licença definida pelo proprietário. Sem um arquivo `LICENSE`, este repositório **não**
-é open source; a definição de licença é uma decisão pendente do proprietário.
+Distribuído sob a licença MIT. Veja [LICENSE](LICENSE).

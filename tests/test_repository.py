@@ -52,7 +52,7 @@ class ValidatorDetectsProblemsTest(TempDirMixin, unittest.TestCase):
         self.assertIn("conflito inexistente CF-99", self.errors())
 
     def test_broken_link(self):
-        self.edit("README.md", "[CONTRIBUTING.md](CONTRIBUTING.md)", "[CONTRIBUTING.md](NAO-EXISTE.md)")
+        self.edit("README.md", "[LICENSE](LICENSE)", "[LICENSE](NAO-EXISTE)")
         self.assertIn("link quebrado", self.errors())
 
     def test_plugin_manifest_must_not_declare_agents(self):
