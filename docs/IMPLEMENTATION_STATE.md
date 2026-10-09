@@ -9,9 +9,9 @@
 - Data: 2026-10-08
 - Diretório: `/home/ordnale/Desktop/desenv/quality-architecture-base`
 - Ferramentas inspecionadas: Claude Code 2.1.295, codex-cli 0.161.0, Python 3.12.3, Node 24.15.0
-- Repositório Git: inicializado com `git init -b main` (autorizado pelo usuário). O remoto
-  `https://github.com/ORDNALE/quality-architecture-base` existe, mas **não** foi configurado
-  localmente; nenhum commit, push ou tag foi feito.
+- Repositório Git: inicializado com `git init -b main` (autorizado pelo usuário). Durante a
+  construção não houve commit, push nem tag; a publicação veio depois, autorizada pelo
+  proprietário (ver "Pós-entrega").
 - ERP de água de coco: **não** auditado nem tocado.
 
 ## Plano por fases
@@ -217,8 +217,8 @@ skill, agentes customizados), instalador.
 
 - Descoberta dos agentes customizados do Codex não verificada em execução (não aparece em
   `prompt-input`).
-- Instalação do plugin a partir do GitHub não testada (o repositório remoto ainda não tem os
-  arquivos; nenhum push foi feito).
+- Instalação do plugin a partir do GitHub não testada (na época o repositório remoto ainda não
+  tinha os arquivos; o push foi feito depois — ver "Pós-entrega").
 
 **Próximo passo**: Fase 6 — README público, CONTRIBUTING, CHANGELOG e documentação técnica.
 
@@ -230,7 +230,8 @@ skill, agentes customizados), instalador.
 
 - `README.md` (pt-BR, público): problema, funcionalidades, tecnologias, pré-requisitos, instalação
   Claude/Codex, uso dos quatro modos, perfil/arquitetura, atualização via GitHub, documentação,
-  escopo de segurança, contribuição e situação da licença (não definida; não declarado open source).
+  escopo de segurança e licença. Na entrega, sem licença definida; depois, licença MIT e remoção
+  da seção de contribuição (ver "Pós-entrega").
 - `CONTRIBUTING.md` (fluxo, convenções, versionamento semântico, releases e tags planejadas).
 - `CHANGELOG.md` (0.1.0 não lançado).
 - `docs/INSTALLATION.md`, `docs/USAGE.md`, `docs/CONFIGURATION.md`, `docs/RULE_CONFLICTS.md`,
@@ -243,7 +244,7 @@ para não colidir com a validação.
 
 **Decisões**
 
-- D19: nenhuma licença criada; README declara a pendência.
+- D19: o agente não escolheu licença. O proprietário adicionou a licença MIT depois (ver "Pós-entrega").
 - D20: `docs/VALIDATION.md` será escrito na Fase 7 com resultados reais.
 
 **Próximo passo**: Fase 7 — `scripts/validate_repo.py`, testes automatizados, validações de
@@ -284,19 +285,43 @@ integração e `docs/VALIDATION.md`.
   comportamento correto.
 - C6: aviso de compatibilidade de bytecode no modelo ArchUnit (ArchUnit 1.3.0 × javac 25).
 
-**Pendências (não concluídas nesta execução)**
+**Pendências (não concluídas nesta execução)** — situação atualizada em "Pós-entrega"
 
-1. Push para `https://github.com/ORDNALE/quality-architecture-base` e teste de instalação do
-   plugin a partir do GitHub (não feito: commits/push fora do escopo desta execução).
+1. Teste de instalação do plugin a partir do GitHub (o push foi feito depois; o teste ainda não).
 2. Execução real dos agentes customizados do Codex e da delegação a subagentes do Claude Code.
 3. FIX autorizado completo ponta a ponta (requer projeto compilável com Maven e, idealmente,
    PostgreSQL para medições).
 4. Exercícios com modelo para perfis Angular/React.
-5. Definição de licença pelo proprietário.
-6. Primeira release/tag `v0.1.0` (após revisão humana e commit pelo proprietário).
+5. ~~Definição de licença pelo proprietário.~~ Resolvida: MIT.
+6. Primeira release/tag `v0.1.0`.
 
-**Estado final do repositório**: arquivos criados no diretório de trabalho; **nenhum commit**,
-nenhum remoto configurado, nenhuma tag, nenhum push. ERP não acessado.
+---
 
-**Próximo passo sugerido**: revisão humana, `git add` + commit pelo proprietário, configurar o
-remoto e push; depois validar a instalação via GitHub (pendência 1).
+## Pós-entrega — publicação e licença (2026-10-08)
+
+- O proprietário fez o commit `feat: quality-architecture-base 0.1.0`, configurou o remoto
+  `origin` (`https://github.com/ORDNALE/quality-architecture-base.git`) e adicionou o arquivo
+  `LICENSE` (MIT) pelo GitHub.
+- O push inicial foi rejeitado porque o histórico local não continha o commit do `LICENSE`. Com
+  autorização do proprietário, o commit remoto foi incorporado por merge (sem conflitos) e o
+  `main` foi enviado sem sobrescrever nada.
+- README: seção "Licença" passou a declarar MIT com link para `LICENSE`; seção "Contribuição"
+  removida a pedido do proprietário. `CONTRIBUTING.md` continua no repositório.
+- Commits deste repositório não levam linha de coautoria de IA. O merge foi recriado sem ela (mesma
+  árvore e mesmos pais) e enviado com `git push --force-with-lease`; nenhum commit no remoto tem
+  `Co-Authored-By`.
+
+**Estado atual**: `main` local e `origin/main` sincronizados; licença MIT; nenhuma tag criada. ERP
+não acessado.
+
+**Pendências atuais**
+
+1. Testar a instalação do plugin a partir do GitHub
+   (`claude plugin marketplace add ORDNALE/quality-architecture-base`).
+2. Execução real dos agentes customizados do Codex e da delegação a subagentes do Claude Code.
+3. FIX autorizado completo ponta a ponta (projeto compilável com Maven; PostgreSQL para medições).
+4. Exercícios com modelo para os perfis Angular/React.
+5. Primeira release/tag `v0.1.0`.
+6. Opcional: declarar `"license": "MIT"` em `.claude-plugin/plugin.json`.
+
+**Próximo passo sugerido**: pendência 1.
