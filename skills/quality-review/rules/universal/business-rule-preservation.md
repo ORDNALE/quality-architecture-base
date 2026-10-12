@@ -6,11 +6,11 @@ risco), em REVIEW (como detector de regressão) e principalmente em FIX.
 ### UNI-BRP-001 — Comportamento observável identificado antes da mudança
 
 - **Aplica-se quando:** FIX; REVIEW de refatorações.
-- **Verificar:** o plano lista contratos, cálculos, validações, permissões, transações e efeitos colaterais que não podem mudar; existe baseline (compilação, testes, contagem de consultas quando relevante).
-- **Evidência mínima:** plano preenchido + saída real do baseline (E2/E1).
+- **Verificar:** o plano lista contratos, cálculos, validações, permissões, transações e efeitos colaterais que não podem mudar; existe baseline válido das áreas afetadas (compilação, testes, contagem de consultas quando relevante), executado ou reutilizado e identificado conforme `references/contracts.md` §7.
+- **Evidência mínima:** plano preenchido + baseline identificado (revisão, escopo, origem, comandos/resultados, validade). Execução própria nesta sessão: E2/E1; reutilizado ou relatado por outro agente: mantém a classificação original (E5 se anterior e não refeito — `references/evidence.md`), sem promoção a E1/E2.
 - **Severidade base:** HIGH (mudança sem baseline em área crítica)
 - **Falsos positivos / cuidados:** mudanças puramente mecânicas verificadas pelo compilador (ex.: remover import não usado) dispensam teste de caracterização, não o baseline de compilação.
-- **Correção preferida:** completar o plano e o baseline antes de alterar código.
+- **Correção preferida:** completar o plano e identificar baseline válido (reutilizar, ou executar só as lacunas e invalidações) antes de alterar código.
 - **Conflitos:** CF-16
 
 ### UNI-BRP-002 — Testes de caracterização em código sem cobertura

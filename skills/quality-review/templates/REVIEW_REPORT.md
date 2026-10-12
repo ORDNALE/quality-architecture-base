@@ -6,6 +6,12 @@
 - **Perfis aplicados:** <arquitetura> · <stacks>
 - **Fontes alteradas durante a revisão:** <nenhuma — comprovado por `tree_snapshot.py compare` | não verificado>
 
+> Para alteração pequena, usar seção curta no estado/relatório consolidado existente conforme
+> `references/contracts.md` §7: alvo/revisão, parecer, achados (ou nenhum), verificações novas ou
+> reutilizadas e limites. Não criar arquivo ou tabela vazia por obrigação de preencher template.
+> Usar o formato completo abaixo quando o risco/decisão justificar; campos dos achados (§5)
+> continuam obrigatórios quando houver achado.
+
 ## 1. Parecer
 
 **<APROVADO | APROVADO COM RESSALVAS | ALTERAÇÕES NECESSÁRIAS | INCONCLUSIVO>**

@@ -5,6 +5,9 @@ introduzidas pela mudança e produzir um parecer. **Sem modificar fontes e sem c
 
 **Papéis:** Architecture Auditor (violações) e Regression/Performance Validator (riscos de regressão).
 
+Aplicar `references/contracts.md` §7: REVIEW permanece obrigatório quando previsto no projeto,
+mas não significa nova auditoria global, nova suíte ou novo arquivo de relatório a cada passo.
+
 ## Pré-condições
 
 - Alvo definido: `git diff` (não commitado), `git diff --staged`, `git diff <base>...HEAD`, commit,
@@ -30,10 +33,14 @@ introduzidas pela mudança e produzir um parecer. **Sem modificar fontes e sem c
      paginação, lazy loading/bundle no frontend.
    - Integridade de testes: removidos, desabilitados, asserções afrouxadas (UNI-BRP-005).
    - Diffs de FIX: escopo vs. plano autorizado (`fix_gate.py check --changed-from-git`).
-5. Execute verificações que não alteram fontes, se disponíveis e rápidas (compilação, testes dos
-   módulos tocados, lint). Registre o que não foi executado.
+5. Conferir evidências existentes e sua validade para a revisão/escopo atual. Executar verificações
+   que não alteram fontes somente para mudanças posteriores, lacunas ou riscos que as anteriores
+   não cubram; não repetir testes/build/lint do FIX se continuarem válidos. Discriminar resultados
+   novos, reutilizados e não executados, com justificativa.
 6. Parecer: `APROVADO`, `APROVADO COM RESSALVAS`, `ALTERAÇÕES NECESSÁRIAS` ou `INCONCLUSIVO`.
-7. Relatório: `templates/REVIEW_REPORT.md` → `.quality/reports/REVIEW-<data>.md` (ou conversa).
+7. Parecer conforme `templates/REVIEW_REPORT.md`: seção compacta no estado/relatório consolidado
+   existente para alterações pequenas; arquivo completo quando risco/decisão justificar (ou
+   conversa se o perfil/pedido assim determinar). Não duplicar planos ou evidências.
 8. `tree_snapshot.py compare` — nenhuma alteração fora de `.quality/`.
 
 ## Critérios de saída

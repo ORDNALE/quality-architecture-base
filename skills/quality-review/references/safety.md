@@ -13,7 +13,7 @@ marcados com (†); os demais são absolutos.
 | G-05 | Nunca remover, desabilitar, pular ou enfraquecer testes para fazê-los passar. Investigue a falha e ajuste a implementação. |
 | G-06 | Nunca inventar execuções, benchmarks, contagens ou saídas. Declarar o que não foi executado e por quê. Quando a validação é insuficiente, dizer: "ausência de regressão não comprovada". |
 | G-07 | Não instalar ferramentas, dependências ou plugins de build nem ativar analisadores no projeto sem autorização. Preferir ferramentas já configuradas. (†) |
-| G-08 | Não ler/alterar repositórios ou diretórios fora do projeto alvo, exceto a própria skill. |
+| G-08 | Não ler/alterar repositórios ou diretórios fora do projeto alvo, exceto ler a própria skill. A skill instalada (cópia ou symlink) é gerenciada pelo framework: não a edite ao trabalhar em projetos consumidores — com symlink, editá-la altera a base original. Personalizações pertencem ao `.quality/` do projeto. |
 | G-09 | Riscos de segurança são registrados e encaminhados; não executar testes de exploração nem enfraquecer controles. |
 | G-10 | Não impor perfil arquitetural quando a arquitetura desejada é desconhecida; não migrar arquitetura sem contrato explícito. |
 | G-11 | Preservar alterações não commitadas do usuário: inspecionar `git status` antes de qualquer escrita; nunca usar `git checkout -- .`, `git reset --hard`, `git clean`, `git stash` sem pedido explícito. |

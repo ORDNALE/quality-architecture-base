@@ -21,10 +21,11 @@ FIX.
 ## Método
 
 1. Confirme `fix_gate.py check <plano>` = exit 0 antes da primeira edição.
-2. Confirme que o baseline do validador existe.
+2. Confirme que o baseline do validador está identificado e válido conforme `references/contracts.md` §7.
 3. Escreva testes de caracterização primeiro, quando aplicável; eles passam antes da mudança.
 4. Faça a menor mudança que resolve o achado. Uma preocupação por passo.
-5. Compile e rode os testes relevantes após cada passo.
+5. Validar os comportamentos/invariantes afetados com testes focais e marcos proporcionais ao risco
+   (contracts §7), sem repetir compilação incluída no comando ou evidência ainda válida.
 6. Mantenha: assinaturas públicas, JSON, status HTTP, mensagens de validação, ordenação, paginação,
    fronteiras de transação, permissões, tipos numéricos e arredondamentos.
 7. Se descobrir que a correção exige tocar arquivo não autorizado ou mudar regra de negócio:

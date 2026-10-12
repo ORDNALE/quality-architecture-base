@@ -1,13 +1,16 @@
 # Regras de testes — estratégia e regressão
 
-### TST-STR-001 — Baseline executado antes de qualquer FIX
+Aplicar a política geral de `references/contracts.md` §7: cobertura por comportamento/risco,
+testes focais, marcos de validação completa e evidência reutilizável, sem enfraquecer testes.
+
+### TST-STR-001 — Baseline válido identificado antes de qualquer FIX
 
 - **Aplica-se quando:** FIX.
-- **Verificar:** compilação e suíte de testes existentes executadas antes da mudança, com resultado registrado (inclusive falhas pré-existentes).
-- **Evidência mínima:** E2 (saída real dos comandos).
+- **Verificar:** baseline das áreas afetadas identificado antes da mudança, executado ou reutilizado conforme contracts §7, com revisão, escopo, origem, comandos/resultados e conferência de validade (inclusive falhas pré-existentes).
+- **Evidência mínima:** saída real identificada e conferência da revisão/diffs e condições relevantes; discriminar execução própria de evidência anterior/relatada, sem promovê-la a E2 novo.
 - **Severidade base:** HIGH
 - **Falsos positivos / cuidados:** testes que já falham antes da mudança são registrados como pré-existentes, não "consertados" pelo FIX.
-- **Correção preferida:** executar e registrar no plano §8.
+- **Correção preferida:** registrar no plano §8 a referência válida ou executar apenas as verificações necessárias para preencher lacunas/invalidações; justificar suítes completas pelo impacto.
 - **Conflitos:** nenhum conhecido
 
 ### TST-STR-002 — Testes de integração representativos do banco real
@@ -23,10 +26,10 @@
 ### TST-STR-003 — Teste de contrato antes de mudar DTOs/serialização
 
 - **Aplica-se quando:** FIX que troca Entity por DTO, introduz Mapper, muda serialização ou paginação.
-- **Verificar:** existe teste que fixa o JSON atual (campos, nulos, formatos, status) dos endpoints afetados.
-- **Evidência mínima:** teste passando antes e depois (E2).
+- **Verificar:** existe cobertura adequada do JSON atual (campos, nulos, formatos, status) dos endpoints afetados; reutilizar testes de contrato existentes, acrescentando somente lacunas reais.
+- **Evidência mínima:** cobertura de contrato com resultados antes/depois identificados; discriminar execução nova de baseline reutilizado conforme contracts §7, sem promover evidência anterior a E2 novo.
 - **Severidade base:** HIGH
-- **Falsos positivos / cuidados:** valores voláteis (datas de criação, ids) devem ser controlados, não ignorados em massa.
+- **Falsos positivos / cuidados:** valores voláteis (datas de criação, ids) devem ser controlados, não ignorados em massa; DTO interno sem impacto no contrato não exige teste de serialização/getter por si só.
 - **Correção preferida:** RestAssured/cliente de teste com asserções de estrutura e valores, ou snapshot aprovado.
 - **Conflitos:** CF-02
 
@@ -43,11 +46,11 @@
 ### TST-STR-005 — Testes frontend nos fluxos afetados
 
 - **Aplica-se quando:** mudanças de frontend (lazy loading, paginação, busca, estado).
-- **Verificar:** testes unitários/componentes/E2E existentes cobrindo navegação, busca com debounce/cancelamento e paginação.
+- **Verificar:** cobertura relevante do fluxo alterado no nível adequado (unitário, componente ou E2E), reutilizando casos existentes; não exigir automaticamente os três níveis para o mesmo cenário.
 - **Evidência mínima:** E2.
 - **Severidade base:** MEDIUM
 - **Falsos positivos / cuidados:** ausência de testes vira limitação declarada no relatório de regressão.
-- **Correção preferida:** testes de componente para o fluxo alterado.
+- **Correção preferida:** testes de componente para o fluxo alterado; E2E seletivo para jornadas críticas ou riscos específicos de navegador, sem duplicar toda a matriz unitária.
 - **Conflitos:** CF-04
 
 ### TST-STR-006 — Testes determinísticos

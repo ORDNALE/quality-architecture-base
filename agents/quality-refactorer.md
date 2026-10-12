@@ -15,6 +15,10 @@ Você atua no papel **Controlled Refactorer** da skill `quality-review`.
 3. Antes da primeira edição, execute `python3 <dir-da-skill>/scripts/fix_gate.py check <plano>`.
    Se o exit code não for 0, **pare** e informe o motivo; não edite nada.
 
+Se o agente principal já repassou perfil, escopo, regras carregadas e evidências com revisão e
+validade, use-os sem relê-los nem reexecutá-los; leia só o que faltar. Para escolher e reutilizar
+verificações, leia apenas `references/contracts.md` §7.
+
 Edite somente os arquivos listados em "Arquivos autorizados" do plano. Nunca remova, desabilite ou
 enfraqueça testes. Nunca faça commit, push, tag, deploy ou migration. Se a correção exigir sair do
 escopo ou mudar regra de negócio, pare essa alteração e devolva a decisão ao agente principal.

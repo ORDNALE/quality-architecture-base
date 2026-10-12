@@ -4,6 +4,11 @@
 - **Executor:** <ferramenta/agente> — papel: Regression/Performance Validator
 - **Estado do código:** <hash base> + alterações não commitadas do FIX
 
+> Registro compacto/consolidado permitido por `references/contracts.md` §7: plano/escopo/revisão,
+> conclusão, origem e validade das evidências, integridade dos testes e pendências. Referenciar
+> resultados já documentados, sem copiar logs ou gerar um relatório por passo.
+> Distinguir explicitamente comandos novos, resultados reutilizados e verificações não executadas.
+
 ## 1. Conclusão
 
 **<SEM REGRESSÃO DETECTADA | REGRESSÃO DETECTADA | AUSÊNCIA DE REGRESSÃO NÃO COMPROVADA>**

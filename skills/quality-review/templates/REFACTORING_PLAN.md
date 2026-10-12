@@ -3,6 +3,11 @@
 > Plano obrigatório para o modo FIX. Fica em `.quality/plans/`. Nenhuma linha de código é
 > alterada antes de a seção **Autorização** estar preenchida e `scripts/fix_gate.py check` passar.
 
+> Formato proporcional: `references/contracts.md` §7. O corpo pode condensar itens aplicáveis em
+> problema/escopo, riscos/contratos e verificações/aceite, referenciando evidências existentes.
+> Preservar sempre identificador, arquivo formal, bloco de autorização e gates; não criar plano
+> por subpasso do mesmo escopo já autorizado. Seções sem pertinência não exigem texto artificial.
+
 - **Projeto:** <nome>
 - **Origem:** <relatório `.quality/reports/AUDIT-....md`, achados F-...>
 - **Executor:** <ferramenta/agente> — papel: Controlled Refactorer
@@ -62,15 +67,20 @@
 
 ## 9. Passos incrementais
 
-> Cada passo deve compilar e passar nos testes antes do próximo.
+> Cada passo que afete comportamento/invariantes exige as verificações pertinentes; focais durante
+> implementação, globais nos marcos justificados. Não repetir evidência válida nem compilação já
+> incluída no comando. Na seção 8, marque cada resultado como `novo` ou `reutilizado (origem,
+> revisão)` (contracts §7).
 
 1. <adicionar teste de caracterização para ...>
 2. <...>
 
 ## 10. Critérios de aceite
 
-- [ ] Todos os testes pré-existentes passam sem terem sido removidos, desabilitados ou enfraquecidos.
-- [ ] Testes de caracterização passam antes e depois.
+- [ ] Testes existentes preservados; verificações pertinentes passam, com seleção, marcos e limites
+      registrados conforme contracts §7, sem remover/desabilitar/enfraquecer casos para obter verde.
+- [ ] Testes de caracterização, somente se a cobertura existente for insuficiente (UNI-BRP-002),
+      passam antes e depois; caso contrário, indicar a cobertura existente que protege o comportamento.
 - [ ] Contratos listados na seção 3 inalterados (evidência: ...).
 - [ ] Arquivos alterados ⊆ arquivos autorizados (`fix_gate.py check --changed-from-git`).
 - [ ] <critério de desempenho medido, se aplicável>

@@ -6,6 +6,9 @@ preservando regra de negócio, contratos, transações e permissões, com baseli
 **Papéis:** Controlled Refactorer (`roles/CONTROLLED_REFACTORER.md`) para alterar;
 Regression/Performance Validator (`roles/REGRESSION_VALIDATOR.md`) para baseline e validação.
 
+Seleção de verificações, evidência reutilizável e registro compacto: `references/contracts.md`
+§7. Essa política não dispensa nenhuma pré-condição de autorização abaixo.
+
 ## Pré-condições (todas obrigatórias antes de alterar qualquer arquivo de código ou teste)
 
 Os passos 1–2 abaixo produzem o plano e a autorização; só então o código pode ser alterado.
@@ -43,25 +46,35 @@ altere nenhum arquivo de código enquanto isso.
    - Rode `fix_gate.py check`.
 3. **Baseline** (Regression Validator)
    - `tree_snapshot.py create` (fora do projeto).
-   - Compilação e testes existentes; registre resultados, inclusive falhas pré-existentes.
+   - Identificar baseline válido das áreas afetadas (novo ou reutilizado conforme contracts §7);
+     registrar revisão, origem, escopo, comandos/resultados, conferência e falhas pré-existentes.
    - Medições do plano (contagem de consultas, `EXPLAIN`, bundle) quando aplicáveis e possíveis.
 4. **Testes de caracterização** (Controlled Refactorer)
    - Quando a área não tem cobertura suficiente (UNI-BRP-002, TST-STR-003): adicione testes que
      passam **antes** da refatoração. Esses arquivos de teste precisam estar em "Arquivos autorizados".
 5. **Refatorar em passos pequenos**
-   - Um passo por vez, conforme o plano §9. Após cada passo: compilar e rodar os testes relevantes.
+   - Um passo por vez, conforme o plano §9; validar o comportamento/invariantes afetados com
+     testes focais. Compilação incluída nesses comandos não precisa de outra execução idêntica.
+     Suítes completas seguem os marcos/impacto de contracts §7, não cada edição mecânica.
    - Se surgir necessidade fora do escopo ou conflito irreconciliável: pare **apenas** essa
      alteração, registre no plano e peça decisão.
 6. **Validar** (Regression Validator)
    - `fix_gate.py check <plano> --project <projeto> --changed-from-git` — arquivos alterados dentro do escopo.
    - `tree_snapshot.py compare --snapshot <arquivo> --allow <globs autorizados>`.
-   - Mesmos comandos do baseline; compare antes/depois; testes de caracterização verdes.
+   - As duas checagens de escopo são complementares, não redundantes: `git status` vê arquivos
+     rastreados em pastas que o snapshot ignora (`build/`, `dist/`, `out/`, `target/`); o snapshot
+     vê arquivos ignorados pelo Git que `git status` omite. Mantenha ambas.
+   - Comparar verificações equivalentes do escopo afetado antes/depois; reutilizar resultados
+     ainda válidos, sem repetir comandos por passagem de papel. Cobrir mudanças posteriores e
+     lacunas; testes de caracterização relevantes verdes, globais quando o impacto justificar.
    - Comparação de contratos e consultas quando relevante.
 7. **Relatar**
-   - `templates/REGRESSION_REPORT.md` → `.quality/reports/REGRESSION-<data>-<slug>.md`.
+   - Registrar conforme `templates/REGRESSION_REPORT.md`; para mudanças pequenas, seção curta
+     no estado/relatório consolidado existente, com referência ao plano e evidências (contracts §7).
    - Conclusão honesta: "sem regressão detectada" somente com cobertura adequada; caso contrário,
      "ausência de regressão não comprovada".
-   - Atualize `.quality/QUALITY_STATE.md`.
+   - Manter `.quality/QUALITY_STATE.md` como índice do resultado, sem duplicar o relatório;
+     se o resultado já estiver nele, não criar um segundo registro equivalente.
    - Liste os arquivos alterados para o usuário revisar e commitar **ele mesmo**.
 
 ## Se um teste falhar após a mudança

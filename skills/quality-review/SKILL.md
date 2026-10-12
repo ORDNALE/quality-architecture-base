@@ -17,6 +17,8 @@ relativos ao diretório que contém este `SKILL.md`.
 2. Confirme o projeto alvo: diretório de trabalho e raiz Git (`git rev-parse --show-toplevel`).
    Não leia nem altere outros repositórios.
 3. Rode `git status --porcelain` e preserve alterações do usuário.
+4. A skill instalada (cópia ou symlink) é gerenciada pelo framework: não a edite (G-08).
+   Personalizações do projeto ficam em `.quality/PROJECT_PROFILE.md` e `ARCHITECTURE_CONTRACT.md`.
 
 ## 2. Escolha do modo
 
@@ -48,7 +50,7 @@ Procure `.quality/PROJECT_PROFILE.md` na raiz do projeto alvo.
 
 | Condição | Carregar |
 |---|---|
-| sempre | `rules/universal/` (todos), `rules/architecture/general.md`, `references/evidence.md` |
+| sempre | `references/safety.md`, `references/evidence.md`, `rules/architecture/general.md`; `rules/universal/` (selecionar arquivos aplicáveis ao escopo) |
 | perfil layered / hexagonal / modular / custom | `profiles/architecture/<perfil>.md` + `rules/architecture/<perfil>.md` (custom: só o perfil) |
 | Java/Quarkus | `profiles/stack/java-quarkus.md` → regras listadas nele |
 | PostgreSQL | `profiles/stack/postgresql.md` → `rules/persistence/` |
@@ -58,6 +60,9 @@ Procure `.quality/PROJECT_PROFILE.md` na raiz do projeto alvo.
 | escrever artefato | `references/contracts.md` + template em `templates/` |
 
 Em REVIEW de diff pequeno, carregue apenas as regras das áreas tocadas pelo diff.
+Consultar `references/contracts.md` §7 para seleção de testes, reutilização de evidências e
+registro compacto. Contexto já lido pode ser reutilizado após confirmar que instruções,
+perfil/contrato e escopo não mudaram; isso não dispensa guardrails nem regras aplicáveis.
 
 ## 5. Papéis
 
@@ -67,9 +72,10 @@ Em REVIEW de diff pequeno, carregue apenas as regras das áreas tocadas pelo dif
 | Controlled Refactorer | `roles/CONTROLLED_REFACTORER.md` | FIX |
 | Regression/Performance Validator | `roles/REGRESSION_VALIDATOR.md` | FIX (antes e depois), REVIEW |
 
-Se a ferramenta oferecer subagentes configurados para estes papéis (ver `integrations/` no
-repositório da base), delegue a eles. Sem subagentes, assuma o papel indicado em cada etapa do
-workflow — isso **não** é isolamento de contexto, e o relatório não deve afirmar o contrário.
+Subagentes configurados para estes papéis são opcionais (ver `integrations/` no repositório da
+base): delegar quando risco, independência ou paralelismo justificar o custo, sem repetir a mesma
+leitura/execução entre agentes. Em mudanças pequenas, o principal pode assumir os papéis — isso
+**não** é isolamento de contexto, e o registro não deve afirmar o contrário.
 
 ## 6. Utilitários determinísticos (Python 3.10+, só biblioteca padrão, somente leitura)
 

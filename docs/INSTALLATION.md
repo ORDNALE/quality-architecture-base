@@ -39,6 +39,12 @@ Garantias do instalador:
 
 ### Symlink ou cópia?
 
+A skill instalada é **gerenciada pelo framework**, nos dois modos: não a edite durante o trabalho em
+projetos consumidores. Com symlink, editar a skill instalada altera a base original; com cópia, a
+edição se perde no próximo `--update`. Personalizações locais pertencem ao `.quality/` do projeto
+(`PROJECT_PROFILE.md`, `ARCHITECTURE_CONTRACT.md`); mudanças na skill são feitas no repositório
+da base.
+
 | | Symlink | Cópia |
 |---|---|---|
 | Atualização | automática com `git pull` | `--update` após `git pull` |

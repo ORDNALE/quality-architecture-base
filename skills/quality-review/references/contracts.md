@@ -122,3 +122,47 @@ Da maior para a menor:
 
 Quando um nível inferior é contrariado por um superior, o relatório registra a divergência e a
 justificativa — nunca silenciosamente. Ver `references/conflict-resolution.md`.
+
+## 7. Política operacional proporcional ao risco
+
+Esta é a referência geral para workflows, papéis e templates; o perfil do consumidor registra
+somente particularidades locais. Não altera o contrato arquitetural, os guardrails nem a
+autorização nominal e o escopo do FIX (§3).
+
+- **Selecionar por comportamento e risco:** priorizar regras de negócio, contratos, integridade,
+  autorização e segurança dos fluxos afetados. Reutilizar testes adequados; acrescentar casos
+  somente para comportamento relevante ou lacuna real. Não exigir teste por método, classe,
+  DTO, getter ou detalhe interno, nem duplicar garantias do compilador/lint. Caracterização
+  continua necessária antes de refatorar comportamento sem cobertura suficiente (UNI-BRP-002).
+- **Durante a implementação:** executar testes focais nos passos que afetem comportamento,
+  contratos ou invariantes. Usar integração com banco representativo para SQL/transações.
+  Executar suítes completas das áreas pertinentes em fechamentos relevantes, mudanças
+  transversais ou quando o impacto justificar; registrar a seleção e seus limites.
+- **E2E seletivo:** proteger jornadas críticas e riscos próprios do navegador (navegação, sessão,
+  offline, abas e atualização), sem reproduzir nele toda a matriz já comprovada em testes
+  unitários/integração. Não remover, ignorar ou enfraquecer testes existentes para economizar.
+- **Baseline reutilizável:** identificar revisão e alterações não commitadas cobertas, escopo,
+  comandos/seletores, resultados, origem e condições relevantes do ambiente/dados. Conferir os
+  diffs posteriores, dependências, configuração e ambiente antes de reutilizar. Mudanças que
+  afetem a evidência invalidam a parte correspondente, que precisa de nova verificação.
+  Sem essa identificação/conferência, não tratar o baseline como válido. Resultado relatado por
+  outro agente continua atribuído a ele; nunca transformar evidência histórica em execução nova.
+  Reutilização não muda as classificações de `references/evidence.md` nem confirma achado novo
+  apenas por evidência E5.
+- **Sem repetição automática:** FIX e REVIEW podem compartilhar evidência válida do mesmo estado.
+  Revisão somente leitura não exige repetir comandos já cobertos; novas mudanças ou lacunas
+  exigem validação correspondente. Não compilar separadamente quando o comando selecionado já
+  inclui compilação. Não somar execuções sobrepostas nem comparar totais de seletores distintos
+  como se fossem a mesma suíte. Alterações só documentais exigem diff/referências/consistência,
+  não suítes da aplicação sem impacto funcional.
+- **Registro proporcional:** para alteração pequena sem risco/decisão material, registrar escopo,
+  revisão, parecer, verificações novas ou reutilizadas e limitações no estado ou relatório
+  consolidado existente; não criar um arquivo por passo. Achados mantêm os campos do §5,
+  condensados sem perder evidência. Mudanças críticas/transversais ou decisões relevantes
+  justificam formato completo. Templates admitem seções compactas e referências sem duplicação.
+- **FIX permanece formal:** manter arquivo de plano, identificador, bloco de autorização e gates,
+  mesmo quando o corpo for compacto. Reutilizar o plano autorizado nos passos do mesmo escopo;
+  ampliação continua exigindo autorização. Desenvolvimento normal de funcionalidade não vira
+  FIX automaticamente por usar REVIEW; não mudar o rótulo de um FIX para contornar o gate.
+- **Segurança separada:** Quality não substitui o Security Agent/processo especializado. Riscos
+  percebidos são encaminhados; esta política não reduz controles nem autoriza análise ofensiva.

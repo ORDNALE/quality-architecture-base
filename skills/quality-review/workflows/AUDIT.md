@@ -26,10 +26,13 @@ N+1, paginação, frontend, testes e conflitos, gerando relatório priorizado. *
    Releia o código atual: relatórios anteriores e `QUALITY_STATE.md` são contexto (E5).
 3. **Sinais automáticos (E4):** `detect_stack.py` (versões ainda batem com o perfil?) e
    `arch_signals.py` (violações candidatas, Active Record, EAGER, filtros em memória, `listAll`).
-4. **Verificações determinísticas disponíveis (E2)** — somente as que não alteram fontes:
-   compilação, testes existentes, linters/ArchUnit já configurados. Registre comando e resultado.
-   Se forem demoradas ou exigirem serviços (Docker, banco), combine com o usuário ou declare
-   "não executado".
+4. **Verificações determinísticas disponíveis (E2)** — somente as que não alteram fontes e que
+   `references/contracts.md` §7 considere proporcionais ao escopo: compilação, testes e
+   linters/ArchUnit já configurados. Reutilize resultado válido do mesmo estado (revisão, escopo e
+   condições conferidos; classificação original preservada, nunca apresentado como execução nova)
+   e execute só o que faltar ou tiver mudado. Registre comando e resultado, discriminando novo ×
+   reutilizado. Se forem demoradas ou exigirem serviços (Docker, banco), combine com o usuário ou
+   declare "não executado".
 5. **Análise por área** (pule as que o perfil desabilita):
    1. Arquitetura (`rules/architecture/`), respeitando o perfil e as exceções registradas.
    2. Backend e contratos: DTO/MapStruct, Quarkus (`rules/backend/`).

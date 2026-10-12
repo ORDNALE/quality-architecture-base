@@ -325,3 +325,19 @@ não acessado.
 6. Opcional: declarar `"license": "MIT"` em `.claude-plugin/plugin.json`.
 
 **Próximo passo sugerido**: pendência 1.
+
+## Política operacional proporcional — 2026-10-12
+
+O proprietário autorizou ajustes somente documentais na base e no consumidor, sem alteração de
+arquitetura, segurança, autorização, scripts de gate, testes ou metadados. A referência geral é
+`skills/quality-review/references/contracts.md` §7; workflows, papéis e templates apontam para ela.
+Validação por risco, baseline identificado/reutilizável e registros compactos substituem repetições
+automáticas, sem dispensar plano formal/gate de FIX. Particularidades ficam no perfil do consumidor.
+Sem commit/push/deploy; verificações desta mudança são informadas na entrega, sem novo relatório.
+
+Ajustes subsequentes (mesma autorização, somente documentais): UNI-BRP-001 aceita baseline válido
+executado ou reutilizado, preservando a classificação da evidência; plano e AUDIT alinhados a
+contracts §7; adaptadores apontam para §7 e dispensam releitura do que o agente principal repassou;
+a skill instalada (cópia ou symlink) é gerenciada pelo framework (G-08). As checagens de escopo
+`git status` e `tree_snapshot` foram mantidas por serem complementares (cada uma vê arquivos que a
+outra omite). Metadados continuam em 0.1.0.
